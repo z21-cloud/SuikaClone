@@ -1,6 +1,7 @@
 using NUnit.Framework;
 using UnityEngine.TestTools;
 using UnityEngine;
+using SuikaClone.Factories;
 using SuikaClone.Pools;
 
 public class ObjectPoolingTests
@@ -14,7 +15,7 @@ public class ObjectPoolingTests
     public void Constructor_CreatesRequestedNumberOfInactiveObjects()
     {
         var prefab = new GameObject("PoolItemPrefab").AddComponent<TestPoolItem>();
-        var pool = new ObjectPooling<TestPoolItem>(prefab, 3);
+        var pool = new ObjectPooling<TestPoolItem>(new Factory<TestPoolItem>(prefab), 3);
 
         var first = pool.Get();
         var second = pool.Get();
@@ -34,7 +35,7 @@ public class ObjectPoolingTests
     public void Get_ActivatesReturnedObject()
     {
         var prefab = new GameObject("PoolItemPrefab").AddComponent<TestPoolItem>();
-        var pool = new ObjectPooling<TestPoolItem>(prefab, 1);
+        var pool = new ObjectPooling<TestPoolItem>(new Factory<TestPoolItem>(prefab), 1);
 
         var item = pool.Get();
 
@@ -46,7 +47,7 @@ public class ObjectPoolingTests
     public void Return_DeactivatesObject()
     {
         var prefab = new GameObject("PoolItemPrefab").AddComponent<TestPoolItem>();
-        var pool = new ObjectPooling<TestPoolItem>(prefab, 1);
+        var pool = new ObjectPooling<TestPoolItem>(new Factory<TestPoolItem>(prefab), 1);
 
         var item = pool.Get();
         pool.Return(item);
@@ -58,7 +59,7 @@ public class ObjectPoolingTests
     public void Get_ReusesPreviouslyReturnedObject()
     {
         var prefab = new GameObject("PoolItemPrefab").AddComponent<TestPoolItem>();
-        var pool = new ObjectPooling<TestPoolItem>(prefab, 1);
+        var pool = new ObjectPooling<TestPoolItem>(new Factory<TestPoolItem>(prefab), 1);
 
         var first = pool.Get();
         pool.Return(first);
@@ -72,7 +73,7 @@ public class ObjectPoolingTests
     public void Get_WhenPoolIsExhausted_ReturnsNull()
     {
         var prefab = new GameObject("PoolItemPrefab").AddComponent<TestPoolItem>();
-        var pool = new ObjectPooling<TestPoolItem>(prefab, 1);
+        var pool = new ObjectPooling<TestPoolItem>(new Factory<TestPoolItem>(prefab), 1);
 
         var first = pool.Get();
         LogAssert.Expect(LogType.Error, "[ObjectPooling] Pool is empty!");
