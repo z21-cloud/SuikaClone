@@ -1,5 +1,6 @@
 using NUnit.Framework;
 using UnityEngine;
+using UnityEngine.TestTools;
 
 public class ObjectPoolingTests
 {
@@ -22,6 +23,8 @@ public class ObjectPoolingTests
         Assert.That(third, Is.Not.Null);
         Assert.That(first, Is.Not.SameAs(second));
         Assert.That(second, Is.Not.SameAs(third));
+
+        LogAssert.Expect(LogType.Error, "[ObjectPooling] Pool is empty!");
         Assert.That(pool.Get(), Is.Null, "The pool should be empty after the initial capacity is consumed.");
     }
 
@@ -70,6 +73,7 @@ public class ObjectPoolingTests
         var pool = new ObjectPooling<TestPoolItem>(prefab, 1);
 
         var first = pool.Get();
+        LogAssert.Expect(LogType.Error, "[ObjectPooling] Pool is empty!");
         var second = pool.Get();
 
         Assert.That(first, Is.Not.Null);
