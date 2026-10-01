@@ -1,0 +1,12 @@
+{
+    "name": "SuikaClone.EditModeTests",
+    "references": [
+        "SuikaClone.Pools"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "optionalUnityReferences": [
+        "TestAssemblies"
+    ]
+}
