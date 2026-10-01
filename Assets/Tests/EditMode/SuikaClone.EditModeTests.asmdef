@@ -1,12 +1,25 @@
 {
     "name": "SuikaClone.EditModeTests",
+    "rootNamespace": "",
     "references": [
-        "SuikaClone.Pools"
+        "SuikaClone.Pools",
+        "SuikaClone.Factories",
+        "UnityEngine.TestRunner",
+        "UnityEditor.TestRunner"
     ],
     "includePlatforms": [
         "Editor"
     ],
-    "optionalUnityReferences": [
-        "TestAssemblies"
-    ]
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": true,
+    "precompiledReferences": [
+        "nunit.framework.dll"
+    ],
+    "autoReferenced": false,
+    "defineConstraints": [
+        "UNITY_INCLUDE_TESTS"
+    ],
+    "versionDefines": [],
+    "noEngineReferences": false
 }

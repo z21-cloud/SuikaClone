@@ -1,3 +1,6 @@
 {
-    "name": "SuikaClone.Pools"
+    "name": "SuikaClone.Pools",
+    "references": [
+        "SuikaClone.Factories"
+    ]
 }

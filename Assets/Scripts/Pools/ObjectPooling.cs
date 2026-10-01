@@ -1,19 +1,19 @@
 using System.Collections.Generic;
 using UnityEngine;
+using SuikaClone.Factories;
 
 namespace SuikaClone.Pools
 {
     public class ObjectPooling<T> where T : MonoBehaviour
     {
-        private readonly T _prefab;
-        private readonly Transform _parent;
         private readonly List<T> _objects;
+        private readonly IFactory<T> _factory;
 
-        public ObjectPooling(T prefab, int initialCount = 10, Transform parent = null)
+        public ObjectPooling(IFactory<T> factory, int initialCount = 10)
         {
-            _prefab = prefab;
-
             _objects = new List<T>(initialCount);
+            
+            _factory = factory;
 
             for (int i = 0; i < initialCount; i++)
             {
@@ -23,7 +23,7 @@ namespace SuikaClone.Pools
 
         private void CreateObject()
         {
-            var obj = GameObject.Instantiate(_prefab, _parent);
+            var obj = _factory.Create();
             obj.gameObject.SetActive(false);
             _objects.Add(obj);
         }
