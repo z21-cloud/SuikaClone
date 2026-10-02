@@ -9,7 +9,7 @@ public class PlayerController : MonoBehaviour, IInputReader
     [SerializeField] private BaseFruitPool _fruitPool;
 
     private const float _minYPosition = 3f;
-    private const float _maxYPosition = 3f;
+    private const float _maxYPosition = 4f;
 
     private const float _minXPosition = -2;
     private const float _maxXPosition = 2;
@@ -38,14 +38,26 @@ public class PlayerController : MonoBehaviour, IInputReader
 
     private void MoveFruitToMousePosition(BaseFruit fruit)
     {
+        if(!fruit.TryGetComponent(out Rigidbody2D rb))
+        {
+            Debug.LogError("[PlayerController] Fruit does not have a Rigidbody2D component.");
+            return;
+        }
+        
         Vector2 mouseScreenPosition = MousePosition;
         Vector2 mouseWorldPosition = Camera.main.ScreenToWorldPoint(mouseScreenPosition);
 
-        fruit.transform.position = new Vector2(
+        Vector2 spawnPosition = new(
             Mathf.Clamp(mouseWorldPosition.x, _minXPosition, _maxXPosition),
             Mathf.Clamp(mouseWorldPosition.y, _minYPosition, _maxYPosition)
         );
-        
+
+        fruit.transform.position = spawnPosition;
         fruit.gameObject.SetActive(true);
+
+        rb.position = spawnPosition;
+        rb.linearVelocity = Vector2.zero; // Reset velocity to avoid unexpected movement
+        rb.angularVelocity = 0f; // Reset angular velocity to avoid unexpected rotation
+        Physics2D.SyncTransforms(); // Ensure the physics engine is aware of the new position
     }
 }
