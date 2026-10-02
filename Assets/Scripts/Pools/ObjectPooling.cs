@@ -34,7 +34,7 @@ namespace SuikaClone.Pools
             {
                 if (!obj.gameObject.activeInHierarchy)
                 {
-                    obj.gameObject.SetActive(true);
+                    // obj.gameObject.SetActive(true);
                     return obj;
                 }
             }

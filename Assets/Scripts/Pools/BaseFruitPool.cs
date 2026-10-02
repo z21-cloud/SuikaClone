@@ -1,33 +1,35 @@
 using UnityEngine;
+using SuikaClone.Fruits;
+using SuikaClone.Factories;
 
 namespace SuikaClone.Pools
 {
     public class BaseFruitPool : MonoBehaviour
     {
         [SerializeField] private int initialCount = 10;
-        [SerializeField] private Transform parent;
+        [SerializeField] private BaseFruitFactory _fruitFactory;
 
-        // private ObjectPooling<Fruit> _pool;
+        private ObjectPooling<BaseFruit> _pool;
 
         public void Initialize()
         {
-            // _pool = new ObjectPooling<Fruit>(initialCount, parent);
+            // Initialize the pool with the specified initial count
         }
 
         private void Awake()
         {
-            Initialize();
+            _pool = new ObjectPooling<BaseFruit>(_fruitFactory, initialCount);
         }
 
-        /*public Fruit GetFruit()
+        public BaseFruit GetFruit()
         {
             // return _pool.GetObject();
-            return null;
-        }*/
+            return _pool.Get();
+        }
 
-        /*public void ReturnFruit(Fruit fruit)
+        public void ReturnFruit(BaseFruit fruit)
         {
-            // _pool.ReturnObject(fruit);
-        }*/
+            _pool.Return(fruit);
+        }
     }
 }
