@@ -4,7 +4,7 @@ using SuikaClone.Factories;
 
 namespace SuikaClone.Pools
 {
-    public class ObjectPooling<T> where T : MonoBehaviour
+    public class ObjectPooling<T> : IPool<T> where T : MonoBehaviour
     {
         private readonly List<T> _objects;
         private readonly IFactory<T> _factory;

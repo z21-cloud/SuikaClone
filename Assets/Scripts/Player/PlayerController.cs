@@ -23,7 +23,7 @@ public class PlayerController : MonoBehaviour, IInputReader
         if (MouseLMB)
         {
             Debug.Log($"Mouse Position: {MousePosition}");
-            var fruit = _fruitPool.GetFruit();
+            var fruit = _fruitPool.Get();
 
             if (fruit != null)
             {

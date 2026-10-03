@@ -4,7 +4,7 @@ using SuikaClone.Factories;
 
 namespace SuikaClone.Pools
 {
-    public class BaseFruitPool : MonoBehaviour
+    public class BaseFruitPool : MonoBehaviour, IPool<BaseFruit>
     {
         [SerializeField] private int initialCount = 10;
         [SerializeField] private BaseFruitFactory _fruitFactory;
@@ -21,13 +21,13 @@ namespace SuikaClone.Pools
             _pool = new ObjectPooling<BaseFruit>(_fruitFactory, initialCount);
         }
 
-        public BaseFruit GetFruit()
+        public BaseFruit Get()
         {
             // return _pool.GetObject();
             return _pool.Get();
         }
 
-        public void ReturnFruit(BaseFruit fruit)
+        public void Return(BaseFruit fruit)
         {
             _pool.Return(fruit);
         }
