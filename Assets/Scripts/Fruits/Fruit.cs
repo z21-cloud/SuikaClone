@@ -2,8 +2,8 @@ using UnityEngine;
 
 namespace SuikaClone.Fruits
 {
-    public class BaseFruit : MonoBehaviour
+    public class Fruit : MonoBehaviour
     {
-
+        
     }
 }

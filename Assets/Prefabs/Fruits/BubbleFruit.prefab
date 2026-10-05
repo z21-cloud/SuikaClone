@@ -650,6 +650,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7588179168574014251}
   - component: {fileID: 4553952529965014060}
+  - component: {fileID: 1660173703229656211}
   m_Layer: 0
   m_Name: BubbleFruit
   m_TagString: Untagged
@@ -707,6 +708,18 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &1660173703229656211
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5066689309061434219}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 490840a0e304cdc47a254a7d40d00942, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: SuikaClone.Fruits::SuikaClone.Fruits.BubbleFruit
 --- !u!1 &5451560272816701148
 GameObject:
   m_ObjectHideFlags: 0

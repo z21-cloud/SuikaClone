@@ -3,19 +3,19 @@ using UnityEngine;
 
 namespace SuikaClone.Factories
 {
-    public class BaseFruitFactory : MonoBehaviour, IFactory<BaseFruit>
+    public class BaseFruitFactory : MonoBehaviour, IFactory<Fruit>
     {
-        [SerializeField] private BaseFruit _fruitPrefab;
+        [SerializeField] private Fruit _fruitPrefab;
         [SerializeField] private Transform _parent;
 
-        private Factory<BaseFruit> _factory;
+        private Factory<Fruit> _factory;
 
-        private void Awake()
+        public void Initialize()
         {
-            _factory = new Factory<BaseFruit>(_fruitPrefab, _parent);
+            _factory = new Factory<Fruit>(_fruitPrefab, _parent);
         }
 
-        public BaseFruit Create()
+        public Fruit Create()
         {
             return _factory.Create();
         }

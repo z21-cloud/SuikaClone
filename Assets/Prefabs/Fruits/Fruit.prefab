@@ -198,6 +198,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 2443618317290603346}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e6fe1b0bcf4bb3945ba3e397dac98c74, type: 3}
+  m_Script: {fileID: 11500000, guid: b317ac326260db3488184b392e14c516, type: 3}
   m_Name: 
   m_EditorClassIdentifier: SuikaClone.Fruits::SuikaClone.Fruits.BaseFruit

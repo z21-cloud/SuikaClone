@@ -4,30 +4,25 @@ using SuikaClone.Factories;
 
 namespace SuikaClone.Pools
 {
-    public class BaseFruitPool : MonoBehaviour, IPool<BaseFruit>
+    public class BaseFruitPool : MonoBehaviour, IPool<Fruit>
     {
         [SerializeField] private int initialCount = 10;
-        [SerializeField] private BaseFruitFactory _fruitFactory;
 
-        private ObjectPooling<BaseFruit> _pool;
+        private ObjectPooling<Fruit> _pool;
 
-        public void Initialize()
+        public void Initialize(BaseFruitFactory baseFruitFactory)
         {
             // Initialize the pool with the specified initial count
+            _pool = new ObjectPooling<Fruit>(baseFruitFactory, initialCount);
         }
 
-        private void Awake()
-        {
-            _pool = new ObjectPooling<BaseFruit>(_fruitFactory, initialCount);
-        }
-
-        public BaseFruit Get()
+        public Fruit Get()
         {
             // return _pool.GetObject();
             return _pool.Get();
         }
 
-        public void Return(BaseFruit fruit)
+        public void Return(Fruit fruit)
         {
             _pool.Return(fruit);
         }

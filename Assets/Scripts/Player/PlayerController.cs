@@ -36,7 +36,7 @@ public class PlayerController : MonoBehaviour, IInputReader
         }
     }
 
-    private void MoveFruitToMousePosition(BaseFruit fruit)
+    private void MoveFruitToMousePosition(Fruit fruit)
     {
         if(!fruit.TryGetComponent(out Rigidbody2D rb))
         {

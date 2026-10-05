@@ -3,7 +3,6 @@
     "rootNamespace": "",
     "references": [
         "SuikaClone.Factories",
-        "Fruits",
         "SuikaClone.Fruits"
     ],
     "includePlatforms": [],
