@@ -8,17 +8,21 @@ namespace SuikaClone.Core
     {
         [Header("Factories")]
         [SerializeField] private BaseFruitFactory baseFruitFactory;
+        [SerializeField] private BubbleFruitFactory bubbleFruitFactory;
         
         [Header("Pools")]
         [SerializeField] private BaseFruitPool baseFruitPool;
+        [SerializeField] private BubbleFruitPool bubbleFruitPool;
 
         private void Awake()
         {
             // Factory initialization
             baseFruitFactory.Initialize();
+            bubbleFruitFactory.Initialize();
 
             // Pool initialization
             baseFruitPool.Initialize(baseFruitFactory);
+            bubbleFruitPool.Initialize(bubbleFruitFactory);
         }
     }
 }

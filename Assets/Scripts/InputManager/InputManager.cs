@@ -19,14 +19,11 @@ namespace SuikaClone.Core
             // 0 -> Left Mouse Button
             if (Input.GetMouseButtonDown(0)) MouseLMB = true;
             else MouseLMB = false;
-
-            Debug.Log($"[InputManager]: MouseLMB {MouseLMB}");
         }
 
         private void HandleMousePosition()
         {
             MousePosition = Input.mousePosition;
-            Debug.Log($"[InputManager]: MousePosition {MousePosition}");
         }
     }
 }

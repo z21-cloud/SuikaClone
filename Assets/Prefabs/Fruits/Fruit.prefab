@@ -201,3 +201,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b317ac326260db3488184b392e14c516, type: 3}
   m_Name: 
   m_EditorClassIdentifier: SuikaClone.Fruits::SuikaClone.Fruits.BaseFruit
+  fruitData: {fileID: 11400000, guid: da88b4abbc97a264cb994728deae8c41, type: 2}
