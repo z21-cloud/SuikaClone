@@ -1,7 +1,9 @@
 {
     "name": "SuikaClone.Fruits",
     "rootNamespace": "",
-    "references": [],
+    "references": [
+        "GUID:0ebb8acf796b48d4aad7cf19c2e80792"
+    ],
     "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": false,

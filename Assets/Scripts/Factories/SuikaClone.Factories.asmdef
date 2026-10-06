@@ -2,7 +2,8 @@
     "name": "SuikaClone.Factories",
     "rootNamespace": "",
     "references": [
-        "GUID:e2f6b67ae2c231a42ad6eb1c00b7125d"
+        "GUID:e2f6b67ae2c231a42ad6eb1c00b7125d",
+        "GUID:0ebb8acf796b48d4aad7cf19c2e80792"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

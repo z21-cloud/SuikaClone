@@ -1,11 +1,7 @@
 {
-    "name": "SuikaClone.Pools",
+    "name": "SuikaClone.Managers",
     "rootNamespace": "",
-    "references": [
-        "SuikaClone.Factories",
-        "SuikaClone.Fruits",
-        "SuikaClone.Managers"
-    ],
+    "references": [],
     "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": false,

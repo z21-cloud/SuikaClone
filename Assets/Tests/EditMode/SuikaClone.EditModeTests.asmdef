@@ -5,7 +5,8 @@
         "SuikaClone.Pools",
         "SuikaClone.Factories",
         "UnityEngine.TestRunner",
-        "UnityEditor.TestRunner"
+        "UnityEditor.TestRunner",
+        "SuikaClone.Managers"
     ],
     "includePlatforms": [
         "Editor"
