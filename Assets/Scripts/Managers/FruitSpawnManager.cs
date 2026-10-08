@@ -1,25 +1,12 @@
 using SuikaClone.Fruits;
+using SuikaClone.Managers;
 using SuikaClone.Pools;
 using UnityEngine;
 
 public class FruitSpawnManager : MonoBehaviour
 {
-    public static FruitSpawnManager Instance { get; private set; }
-
     [SerializeField] private BaseFruitPool baseFruitPool;
     [SerializeField] private BubbleFruitPool bubbleFruitPool;
-
-    private void Awake()
-    {
-        if (Instance == null)
-        {
-            Instance = this;
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
-    }
 
     public Fruit SpawnFruit(int fruitLevel, Vector3 position)
     {
@@ -45,7 +32,6 @@ public class FruitSpawnManager : MonoBehaviour
             spawnedFruit.gameObject.SetActive(true);
             Vector2 randomDirection = new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f)).normalized; // Random direction
             spawnedFruit.GetComponent<Rigidbody2D>().AddForce(randomDirection * 7.5f, ForceMode2D.Impulse); // Add force for visual effect    
-            spawnedFruit.Initialize();
         }
 
         return spawnedFruit;

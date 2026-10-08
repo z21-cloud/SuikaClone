@@ -1,4 +1,5 @@
 using SuikaClone.Fruits;
+using SuikaClone.Managers;
 using UnityEngine;
 
 namespace SuikaClone.Factories
@@ -9,15 +10,19 @@ namespace SuikaClone.Factories
         [SerializeField] private Transform _parent;
 
         private Factory<Fruit> _factory;
-
-        public void Initialize()
+        private IMergeHandler mergeHandler;
+        
+        public void Initialize(IMergeHandler mergeHandler)
         {
             _factory = new Factory<Fruit>(_fruitPrefab, _parent);
+            this.mergeHandler = mergeHandler;
         }
 
         public Fruit Create()
         {
-            return _factory.Create();
+            var obj = _factory.Create();
+            obj.Initialize(mergeHandler);
+            return obj;
         }
     }
 }

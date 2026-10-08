@@ -10,7 +10,7 @@ namespace SuikaClone.Pools
 
         private ObjectPooling<Fruit> _pool;
 
-        public void Initialize(BaseFruitFactory baseFruitFactory)
+        public void Initialize(IFactory<Fruit> baseFruitFactory)
         {
             // Initialize the pool with the specified initial count
             _pool = new ObjectPooling<Fruit>(baseFruitFactory, initialCount);

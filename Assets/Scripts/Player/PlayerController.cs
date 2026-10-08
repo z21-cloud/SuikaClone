@@ -6,6 +6,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour, IInputReader
 {
     [SerializeField] private InputManager _inputManager;
+    // task: Create pool of pools
     [SerializeField] private BaseFruitPool _fruitPool;
 
     private const float _minYPosition = 3f;
@@ -22,7 +23,7 @@ public class PlayerController : MonoBehaviour, IInputReader
     {
         if (MouseLMB)
         {
-            Debug.Log($"Mouse Position: {MousePosition}");
+            Debug.Log($"[PlayerController] Mouse Position: {MousePosition}");
             var fruit = _fruitPool.Get();
 
             if (fruit != null)

@@ -9,9 +9,11 @@ namespace SuikaClone.Fruits
 
         public FruitData FruitData => fruitData;
 
-        public void Initialize()
+        private IMergeHandler mergeHandler;
+
+        public void Initialize(IMergeHandler mergeHandler)
         {
-            // Add FruitMergeManager component to the fruit GameObject
+            this.mergeHandler = mergeHandler;
         }
 
         private void OnCollisionEnter2D(Collision2D collision)
@@ -22,7 +24,7 @@ namespace SuikaClone.Fruits
                 {
                     if(otherFruit.GetInstanceID() > this.GetInstanceID())
                     {
-                        MergeManager.Instance.MergeFruits(this, otherFruit);
+                        mergeHandler.MergeFruits(this, otherFruit);
                     }
                 }
             }
