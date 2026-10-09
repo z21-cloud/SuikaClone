@@ -7,9 +7,16 @@ namespace SuikaClone.Fruits
     {
         [SerializeField] private FruitData fruitData;
 
-        public FruitData FruitData => fruitData;
-
         private IMergeHandler mergeHandler;
+        private bool isMerging = false;
+
+        public bool IsMerging
+        {
+            get => isMerging;
+            set => isMerging = value;
+        }
+        
+        public FruitData FruitData => fruitData;
 
         public void Initialize(IMergeHandler mergeHandler)
         {

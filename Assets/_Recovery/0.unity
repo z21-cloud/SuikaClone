@@ -181,10 +181,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SuikaClone.GameBootstrapper.GameBootstrapper
   baseFruitFactory: {fileID: 1753065145}
   bubbleFruitFactory: {fileID: 1753065146}
-  squareFruitFactory: {fileID: 1753065147}
   baseFruitPool: {fileID: 1669318744}
   bubbleFruitPool: {fileID: 1669318745}
-  squareFruitPool: {fileID: 1669318746}
   mergeManager: {fileID: 1950868804}
   fruitSpawnManager: {fileID: 1950868806}
   scoreManager: {fileID: 1111141698}
@@ -688,37 +686,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ScoreManager
   _currentScore: 0
---- !u!1 &1569905763
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1569905764}
-  m_Layer: 0
-  m_Name: SquareFruitSpawn
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1569905764
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1569905763}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1753065144}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1669318742
 GameObject:
   m_ObjectHideFlags: 0
@@ -730,7 +697,6 @@ GameObject:
   - component: {fileID: 1669318743}
   - component: {fileID: 1669318744}
   - component: {fileID: 1669318745}
-  - component: {fileID: 1669318746}
   m_Layer: 0
   m_Name: Pools
   m_TagString: Untagged
@@ -779,19 +745,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SuikaClone.Pools.BubbleFruitPool
   initialCount: 10
---- !u!114 &1669318746
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1669318742}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7b2607b8b1c5d3a4784add0259ba3c3a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::SuikaClone.Pools.SquareFruitPool
-  initialCount: 10
 --- !u!1 &1753065143
 GameObject:
   m_ObjectHideFlags: 0
@@ -803,7 +756,6 @@ GameObject:
   - component: {fileID: 1753065144}
   - component: {fileID: 1753065145}
   - component: {fileID: 1753065146}
-  - component: {fileID: 1753065147}
   m_Layer: 0
   m_Name: Factories
   m_TagString: Untagged
@@ -826,7 +778,6 @@ Transform:
   m_Children:
   - {fileID: 1070665060}
   - {fileID: 372106081}
-  - {fileID: 1569905764}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1753065145
@@ -857,20 +808,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SuikaClone.Factories.BubbleFruitFactory
   _fruitPrefab: {fileID: 7159517603566686973, guid: 0b8666aea131f114c9025064ce116a1c, type: 3}
   _parent: {fileID: 372106081}
---- !u!114 &1753065147
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1753065143}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 959b5500dcad351479f7aabd8f7c155e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::SuikaClone.Factories.SquareFruitFactory
-  _fruitPrefab: {fileID: 9209751209005458779, guid: 3e0cc9ed1ed34a54f9a785c10ce2c3dc, type: 3}
-  _parent: {fileID: 1569905764}
 --- !u!1 &1886243709
 GameObject:
   m_ObjectHideFlags: 0
@@ -976,7 +913,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::FruitSpawnManager
   baseFruitPool: {fileID: 1669318744}
   bubbleFruitPool: {fileID: 1669318745}
-  squareFruitPool: {fileID: 1669318746}
 --- !u!1 &2091068926
 GameObject:
   m_ObjectHideFlags: 0

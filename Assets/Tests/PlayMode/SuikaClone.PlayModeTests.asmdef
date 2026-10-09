@@ -1,0 +1,9 @@
+{
+    "name": "SuikaClone.PlayModeTests",
+    "references": [
+        "SuikaClone.Runtime"
+    ],
+    "optionalUnityReferences": [
+        "TestAssemblies"
+    ]
+}

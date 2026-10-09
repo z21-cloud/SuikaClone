@@ -53,6 +53,7 @@ public class PlayerController : MonoBehaviour, IInputReader
             Mathf.Clamp(mouseWorldPosition.y, _minYPosition, _maxYPosition)
         );
 
+        fruit.IsMerging = false; // Reset merging state when moving to mouse positionS
         fruit.transform.position = spawnPosition;
         fruit.gameObject.SetActive(true);
 

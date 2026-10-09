@@ -3,5 +3,6 @@ using UnityEngine;
 public enum FruitType
 {
     Base,
-    Bubble
+    Bubble,
+    Square
 }

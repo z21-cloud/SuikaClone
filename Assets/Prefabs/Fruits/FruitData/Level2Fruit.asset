@@ -10,7 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ba76e6ded26e9c349bcfc4adf5fc7d32, type: 3}
-  m_Name: BaseFruit
+  m_Name: Level2Fruit
   m_EditorClassIdentifier: Assembly-CSharp::FruitData
-  fruitLevel: 0
-  fruitScore: 1
+  fruitLevel: 2
+  fruitScore: 4
+  fruitType: 2
