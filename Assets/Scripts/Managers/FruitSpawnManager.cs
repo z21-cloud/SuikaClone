@@ -1,3 +1,4 @@
+using SuikaClone.Factories;
 using SuikaClone.Fruits;
 using SuikaClone.Managers;
 using SuikaClone.Pools;
@@ -9,20 +10,36 @@ public class FruitSpawnManager : MonoBehaviour
     [SerializeField] private BubbleFruitPool bubbleFruitPool;
     [SerializeField] private SquareFruitPool squareFruitPool;
 
+    public void Initialize(BaseFruitFactory baseFruitFactory, BubbleFruitFactory bubbleFruitFactory, SquareFruitFactory squareFruitFactory, MergeManager mergeManager)
+    {
+        if (baseFruitPool == null || bubbleFruitPool == null || squareFruitPool == null)
+        {
+            Debug.LogError("[FruitSpawnManager] One or more fruit pools are not assigned in the inspector.");
+        }
+
+        // Factory initialization
+        baseFruitFactory.Initialize(mergeManager);
+        bubbleFruitFactory.Initialize(mergeManager);
+        squareFruitFactory.Initalize(mergeManager);
+
+        // Pool initialization
+        baseFruitPool.Initialize(baseFruitFactory);
+        bubbleFruitPool.Initialize(bubbleFruitFactory);
+        squareFruitPool.Initialize(squareFruitFactory);
+    }
+
     public Fruit SpawnFruit(int fruitLevel, Vector3 position)
     {
         FruitType fruitType = GetFruitType(fruitLevel);
-        Fruit spawnedFruit = GetFruitObject(fruitType);
+        Fruit spawnedFruit = GetFruitObjectByType(fruitType);
 
         if (spawnedFruit != null)
         {
             spawnedFruit.IsMerging = false; // Reset merging state when spawning
-            
+
             spawnedFruit.transform.position = position;
-            spawnedFruit.gameObject.SetActive(true);
-            Vector2 randomDirection = new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f)).normalized; // Random direction
-            spawnedFruit.GetComponent<Rigidbody2D>().AddForce(randomDirection * 7.5f, ForceMode2D.Impulse); // Add force for visual effect    
-            Debug.Log($"[SpawnManager]: Spawned object - {spawnedFruit.FruitData.FruitType}");
+            spawnedFruit.gameObject.SetActive(true);    
+            // Debug.Log($"[SpawnManager]: Spawned object - {spawnedFruit.FruitData.FruitType}");
             return spawnedFruit;
         }
         else
@@ -32,27 +49,26 @@ public class FruitSpawnManager : MonoBehaviour
         }
     }
 
-    private Fruit GetFruitObject(FruitType fruitType)
+    private FruitType GetFruitType(int level)
     {
-        Fruit spawnedFruit = null;
-
-        switch (fruitType)
+        return level switch
         {
-            case FruitType.Base:
-                spawnedFruit = baseFruitPool.Get();
-                break;
-            case FruitType.Bubble:
-                spawnedFruit = bubbleFruitPool.Get();
-                break;
-            case FruitType.Square:
-                spawnedFruit = squareFruitPool.Get();
-                break;
-            default:
-                Debug.LogError($"Unsupported fruit type: {fruitType}");
-                break;
-        }
+            0 => FruitType.Base,
+            1 => FruitType.Bubble,
+            2 => FruitType.Square,
+            _ => FruitType.Base
+        };
+    }
 
-        return spawnedFruit;
+    private Fruit GetFruitObjectByType(FruitType fruitType)
+    {
+        return fruitType switch
+        {
+            FruitType.Base => baseFruitPool.Get(),
+            FruitType.Bubble => bubbleFruitPool.Get(),
+            FruitType.Square => squareFruitPool.Get(),
+            _ => null
+        };
     }
 
     public void ReturnFruit(Fruit fruit)
@@ -74,14 +90,9 @@ public class FruitSpawnManager : MonoBehaviour
         }
     }
 
-    private FruitType GetFruitType(int level)
+    public Fruit GetRandomFruit(Vector3 position)
     {
-        return level switch
-        {
-            0 => FruitType.Base,
-            1 => FruitType.Bubble,
-            2 => FruitType.Square,
-            _ => FruitType.Base
-        };
+        int randomLevel = Random.Range(0, 3); // Randomly select a level between 0 and 2
+        return SpawnFruit(randomLevel, position);
     }
 }

@@ -188,6 +188,7 @@ MonoBehaviour:
   mergeManager: {fileID: 1950868804}
   fruitSpawnManager: {fileID: 1950868806}
   scoreManager: {fileID: 1111141698}
+  playerController: {fileID: 1886243711}
 --- !u!4 &212358552
 Transform:
   m_ObjectHideFlags: 0
@@ -916,7 +917,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
   _inputManager: {fileID: 2091068928}
-  _fruitPool: {fileID: 1669318744}
 --- !u!1 &1950868803
 GameObject:
   m_ObjectHideFlags: 0

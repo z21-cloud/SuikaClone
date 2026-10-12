@@ -42,15 +42,26 @@ namespace SuikaClone.Managers
 
             // Return the original fruits to their respective pools
             fruitSpawnManager.ReturnFruit(fruit1);
-            Debug.Log($"[MergeManager] Returning Fruit: {fruit1.name}");
+            // Debug.Log($"[MergeManager] Returning Fruit: {fruit1.name}");
                         
             fruitSpawnManager.ReturnFruit(fruit2);
-            Debug.Log($"[MergeManager] Returning Fruit: {fruit2.name}");
+            // Debug.Log($"[MergeManager] Returning Fruit: {fruit2.name}");
 
             // Handle fruit selection logic here
             Debug.Log($"[MergeManager] Merging Fruit: {fruit1.name} + {fruit2.name}");
 
-            fruitSpawnManager.SpawnFruit(newFruitLevel, mergePosition);
+            Fruit fruit = fruitSpawnManager.SpawnFruit(newFruitLevel, mergePosition);
+
+            if(fruit == null || !fruit.TryGetComponent<Rigidbody2D>(out Rigidbody2D fruitRb))
+            {
+                Debug.LogError("[MergeManager] Spawned fruit is null or missing Rigidbody2D! Check the FruitSpawnManager and ensure that the fruit pools are properly initialized.");
+                return;
+            }
+
+            Debug.Log($"[MergeManager] Succesfully spawned new fruit: {fruit.name} at position {mergePosition}. Adding force for visual effect.");
+
+            Vector2 randomDirection = new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f)).normalized; // Random direction
+            fruitRb.AddForce(randomDirection * 7.5f, ForceMode2D.Impulse); // Add force for visual effect
         }
     }
 }

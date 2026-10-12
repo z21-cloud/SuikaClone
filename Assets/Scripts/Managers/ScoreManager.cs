@@ -14,6 +14,6 @@ public class ScoreManager : MonoBehaviour
     public void AddScore(int scoreToAdd)
     {
         _currentScore += scoreToAdd;
-        Debug.Log($"[ScoreManager] Current Score: {_currentScore}");
+        // Debug.Log($"[ScoreManager] Current Score: {_currentScore}");
     }
 }

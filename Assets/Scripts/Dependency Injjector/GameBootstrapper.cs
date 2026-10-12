@@ -22,18 +22,12 @@ namespace SuikaClone.Core
         [SerializeField] private MergeManager mergeManager;
         [SerializeField] private FruitSpawnManager fruitSpawnManager;
         [SerializeField] private ScoreManager scoreManager;
+        [SerializeField] private PlayerController playerController;
 
         private void Awake()
         {
-            // Factory initialization
-            baseFruitFactory.Initialize(mergeManager);
-            bubbleFruitFactory.Initialize(mergeManager);
-            squareFruitFactory.Initalize(mergeManager);
-
-            // Pool initialization
-            baseFruitPool.Initialize(baseFruitFactory);
-            bubbleFruitPool.Initialize(bubbleFruitFactory);
-            squareFruitPool.Initialize(squareFruitFactory);
+            fruitSpawnManager.Initialize(baseFruitFactory, bubbleFruitFactory, squareFruitFactory, mergeManager);
+            playerController.Initialize(fruitSpawnManager);
 
             mergeManager.Initialize(fruitSpawnManager, scoreManager);
         }
