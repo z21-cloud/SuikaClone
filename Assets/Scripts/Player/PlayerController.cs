@@ -33,12 +33,13 @@ public class PlayerController : MonoBehaviour, IInputReader
 
         if (_currentFruit == null && _timer >= _spawnRate)
         {
-            _currentFruit = _fruitSpawnManager.GetRandomFruit(MousePosition);
+            Vector2 positionToSpawn = ClampMousePosition();
+            _currentFruit = _fruitSpawnManager.SpawnRandomFruit(positionToSpawn);
         }
 
         if (_currentFruit == null)
         {
-            Debug.LogWarning("[PlayerController] Current fruit is null. Cannot proceed with spawning.");
+            Debug.Log("[PlayerController] Current fruit is null. Cannot proceed with spawning.");
             return;
         }
 

@@ -90,7 +90,7 @@ public class FruitSpawnManager : MonoBehaviour
         }
     }
 
-    public Fruit GetRandomFruit(Vector3 position)
+    public Fruit SpawnRandomFruit(Vector3 position)
     {
         int randomLevel = Random.Range(0, 3); // Randomly select a level between 0 and 2
         return SpawnFruit(randomLevel, position);
