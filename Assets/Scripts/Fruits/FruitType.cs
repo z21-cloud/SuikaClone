@@ -3,6 +3,16 @@ using UnityEngine;
 public enum FruitType
 {
     Base,
+    BaseRed,
+    BaseGreen,
+    BaseBlue,
+
     Bubble,
-    Square
+    BubbleRed,
+    BubbleGreen,
+    BubbleBlue,
+
+    Square,
+    SquareRed,
+    SquareGreen
 }

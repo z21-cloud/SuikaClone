@@ -1,18 +1,18 @@
-using UnityEngine;
 using SuikaClone.Fruits;
 using SuikaClone.Managers;
+using UnityEngine;
 
 namespace SuikaClone.Factories
 {
-    public class SquareFruitFactory : MonoBehaviour, IFactory<Fruit>
+    public class BaseBlueFruitFactory : MonoBehaviour, IFactory<Fruit>
     {
         [SerializeField] private Fruit _fruitPrefab;
         [SerializeField] private Transform _parent;
 
         private Factory<Fruit> _factory;
         private IMergeHandler mergeHandler;
-
-        public void Initalize(IMergeHandler mergeHandler)
+        
+        public void Initialize(IMergeHandler mergeHandler)
         {
             _factory = new Factory<Fruit>(_fruitPrefab, _parent);
             this.mergeHandler = mergeHandler;

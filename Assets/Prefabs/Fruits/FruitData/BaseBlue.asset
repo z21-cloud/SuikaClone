@@ -10,7 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ba76e6ded26e9c349bcfc4adf5fc7d32, type: 3}
-  m_Name: Level0Fruit
-  m_EditorClassIdentifier: Assembly-CSharp::FruitData
-  fruitLevel: 0
-  fruitScore: 1
+  m_Name: BaseBlue
+  m_EditorClassIdentifier: SuikaClone.Runtime::FruitData
+  fruitLevel: 3
+  fruitScore: 8
+  fruitType: 3
