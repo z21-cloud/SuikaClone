@@ -179,16 +179,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3f8010c4c464a949a4f3fb55338de3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SuikaClone.GameBootstrapper.GameBootstrapper
-  baseFruitFactory: {fileID: 1753065145}
-  bubbleFruitFactory: {fileID: 1753065146}
-  squareFruitFactory: {fileID: 1753065147}
-  baseFruitPool: {fileID: 1669318744}
-  bubbleFruitPool: {fileID: 1669318745}
-  squareFruitPool: {fileID: 1669318746}
+  baseFruitFactory: {fileID: 2102496009}
+  baseRedFruitFactory: {fileID: 2102496011}
+  baseGreenFruitFactory: {fileID: 2102496012}
+  baseBlueFruitFactory: {fileID: 2102496010}
+  bubbleFruitFactory: {fileID: 256962557}
+  bubbleRedFruitFactory: {fileID: 256962560}
+  bubbleGreenFruitFactory: {fileID: 256962559}
+  bubbleBlueFruitFactory: {fileID: 256962558}
+  squareFruitFactory: {fileID: 1929249440}
+  squareRedFruitFactory: {fileID: 1929249442}
+  squareGreenFruitFactory: {fileID: 1929249441}
+  baseFruitPool: {fileID: 827865654}
+  bubbleFruitPool: {fileID: 1922359653}
+  squareFruitPool: {fileID: 829713419}
   mergeManager: {fileID: 1950868804}
   fruitSpawnManager: {fileID: 1950868806}
   scoreManager: {fileID: 1111141698}
+  gameManager: {fileID: 1719840899}
   playerController: {fileID: 1886243711}
+  loseLine: {fileID: 1748064603}
 --- !u!4 &212358552
 Transform:
   m_ObjectHideFlags: 0
@@ -269,6 +279,98 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8ba2e0f1db7b76e45b698922228227b5, type: 3}
+--- !u!1 &256962555
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 256962556}
+  - component: {fileID: 256962557}
+  - component: {fileID: 256962560}
+  - component: {fileID: 256962559}
+  - component: {fileID: 256962558}
+  m_Layer: 0
+  m_Name: BubbleFactories
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &256962556
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 256962555}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 372106081}
+  m_Father: {fileID: 1753065144}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &256962557
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 256962555}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2a7264ae1e09e047bee45329930f5c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SuikaClone.Factories.BubbleFruitFactory
+  _fruitPrefab: {fileID: 7159517603566686973, guid: 0b8666aea131f114c9025064ce116a1c, type: 3}
+  _parent: {fileID: 372106081}
+--- !u!114 &256962558
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 256962555}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b761eedcd6af4d168524904cf303c103, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: SuikaClone.Runtime::SuikaClone.Factories.BubbleBlueFruitFactory
+  _fruitPrefab: {fileID: 7159517603566686973, guid: 3cc79db936e86014ba6856116f0dee28, type: 3}
+  _parent: {fileID: 372106081}
+--- !u!114 &256962559
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 256962555}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a4f2238355a4d2c9c2f6847390bc102, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: SuikaClone.Runtime::SuikaClone.Factories.BubbleGreenFruitFactory
+  _fruitPrefab: {fileID: 7159517603566686973, guid: d86e905382071fc42b79aa3d26da96ce, type: 3}
+  _parent: {fileID: 372106081}
+--- !u!114 &256962560
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 256962555}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fc0194503e14e01a97e3341acdef101, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: SuikaClone.Runtime::SuikaClone.Factories.BubbleRedFruitFactory
+  _fruitPrefab: {fileID: 7159517603566686973, guid: 93ef453d6ddb73a4faa8bf88b9f1dcfc, type: 3}
+  _parent: {fileID: 372106081}
 --- !u!1 &372106080
 GameObject:
   m_ObjectHideFlags: 0
@@ -293,12 +395,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 372106080}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1753065144}
+  m_Father: {fileID: 256962556}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &400006804
 GameObject:
@@ -552,6 +654,166 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &827865652
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 827865653}
+  - component: {fileID: 827865654}
+  - component: {fileID: 827865657}
+  - component: {fileID: 827865656}
+  - component: {fileID: 827865655}
+  m_Layer: 0
+  m_Name: BasePools
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &827865653
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 827865652}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1669318743}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &827865654
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 827865652}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: feb43bca672fec446898a07b1adcc5b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BaseFruitPool
+  initialCount: 10
+--- !u!114 &827865655
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 827865652}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66c762ddfdc98cb41b00992c85aef56b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: SuikaClone.Runtime::SuikaClone.Pools.BaseBluePool
+  initialCount: 10
+--- !u!114 &827865656
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 827865652}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81e6e79ede6871a49acc0dcf348c82ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: SuikaClone.Runtime::SuikaClone.Pools.BaseGreenPool
+  initialCount: 10
+--- !u!114 &827865657
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 827865652}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d51c848dcd192e478335bcc84d82a1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: SuikaClone.Runtime::SuikaClone.Pools.BaseRedPool
+  initialCount: 10
+--- !u!1 &829713417
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 829713418}
+  - component: {fileID: 829713419}
+  - component: {fileID: 829713421}
+  - component: {fileID: 829713420}
+  m_Layer: 0
+  m_Name: SquarePools
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &829713418
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 829713417}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1669318743}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &829713419
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 829713417}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b2607b8b1c5d3a4784add0259ba3c3a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SuikaClone.Pools.SquareFruitPool
+  initialCount: 10
+--- !u!114 &829713420
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 829713417}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca1e49732b674e9e9c5b6802e8fc1110, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: SuikaClone.Runtime::SuikaClone.Pools.SquareGreenFruitPool
+  initialCount: 10
+--- !u!114 &829713421
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 829713417}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8a07f11369f490b910faeddb15b1109, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: SuikaClone.Runtime::SuikaClone.Pools.SquareRedFruitPool
+  initialCount: 10
 --- !u!1 &1070665059
 GameObject:
   m_ObjectHideFlags: 0
@@ -581,7 +843,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1753065144}
+  m_Father: {fileID: 2102496008}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1094892748
 PrefabInstance:
@@ -713,12 +975,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1569905763}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1753065144}
+  m_Father: {fileID: 1929249439}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1669318742
 GameObject:
@@ -729,9 +991,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1669318743}
-  - component: {fileID: 1669318744}
-  - component: {fileID: 1669318745}
-  - component: {fileID: 1669318746}
   m_Layer: 0
   m_Name: Pools
   m_TagString: Untagged
@@ -751,48 +1010,149 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 827865653}
+  - {fileID: 1922359652}
+  - {fileID: 829713418}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1719840897
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1719840898}
+  - component: {fileID: 1719840899}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1719840898
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1719840897}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1669318744
+--- !u!114 &1719840899
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1669318742}
+  m_GameObject: {fileID: 1719840897}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: feb43bca672fec446898a07b1adcc5b8, type: 3}
+  m_Script: {fileID: 11500000, guid: e47d7b64c431fc14f868e9ddefb5b898, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BaseFruitPool
-  initialCount: 10
---- !u!114 &1669318745
+  m_EditorClassIdentifier: SuikaClone.Runtime::SuikaClone.Core.GameManager
+--- !u!1001 &1748064601
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4094291297062440184, guid: 8ba2e0f1db7b76e45b698922228227b5, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.225
+      objectReference: {fileID: 0}
+    - target: {fileID: 4094291297062440184, guid: 8ba2e0f1db7b76e45b698922228227b5, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4094291297062440184, guid: 8ba2e0f1db7b76e45b698922228227b5, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4094291297062440184, guid: 8ba2e0f1db7b76e45b698922228227b5, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4094291297062440184, guid: 8ba2e0f1db7b76e45b698922228227b5, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4094291297062440184, guid: 8ba2e0f1db7b76e45b698922228227b5, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4094291297062440184, guid: 8ba2e0f1db7b76e45b698922228227b5, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4094291297062440184, guid: 8ba2e0f1db7b76e45b698922228227b5, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4094291297062440184, guid: 8ba2e0f1db7b76e45b698922228227b5, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.70710677
+      objectReference: {fileID: 0}
+    - target: {fileID: 4094291297062440184, guid: 8ba2e0f1db7b76e45b698922228227b5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4094291297062440184, guid: 8ba2e0f1db7b76e45b698922228227b5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4094291297062440184, guid: 8ba2e0f1db7b76e45b698922228227b5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 4174154753159000774, guid: 8ba2e0f1db7b76e45b698922228227b5, type: 3}
+      propertyPath: m_Name
+      value: LoseLine
+      objectReference: {fileID: 0}
+    - target: {fileID: 4174154753159000774, guid: 8ba2e0f1db7b76e45b698922228227b5, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6144220298366055778, guid: 8ba2e0f1db7b76e45b698922228227b5, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4174154753159000774, guid: 8ba2e0f1db7b76e45b698922228227b5, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1748064603}
+  m_SourcePrefab: {fileID: 100100000, guid: 8ba2e0f1db7b76e45b698922228227b5, type: 3}
+--- !u!1 &1748064602 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4174154753159000774, guid: 8ba2e0f1db7b76e45b698922228227b5, type: 3}
+  m_PrefabInstance: {fileID: 1748064601}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1748064603
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1669318742}
+  m_GameObject: {fileID: 1748064602}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9ddc9b2d8f8d0374eb382a38c4c12045, type: 3}
+  m_Script: {fileID: 11500000, guid: 7b56fa125b4bd674a9d7851e6399c2d5, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::SuikaClone.Pools.BubbleFruitPool
-  initialCount: 10
---- !u!114 &1669318746
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1669318742}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7b2607b8b1c5d3a4784add0259ba3c3a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::SuikaClone.Pools.SquareFruitPool
-  initialCount: 10
+  m_EditorClassIdentifier: '::'
 --- !u!1 &1753065143
 GameObject:
   m_ObjectHideFlags: 0
@@ -802,9 +1162,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1753065144}
-  - component: {fileID: 1753065145}
-  - component: {fileID: 1753065146}
-  - component: {fileID: 1753065147}
   m_Layer: 0
   m_Name: Factories
   m_TagString: Untagged
@@ -825,53 +1182,11 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1070665060}
-  - {fileID: 372106081}
-  - {fileID: 1569905764}
+  - {fileID: 2102496008}
+  - {fileID: 256962556}
+  - {fileID: 1929249439}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1753065145
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1753065143}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e0de83fc2374da47a40a6fd5c9d8d8e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: SuikaClone.Factories::SuikaClone.Factories.BaseFruitFactory
-  _fruitPrefab: {fileID: 7641072189545263877, guid: 0c1cc1dbfbc42db409238a28424f9563, type: 3}
-  _parent: {fileID: 1070665060}
---- !u!114 &1753065146
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1753065143}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b2a7264ae1e09e047bee45329930f5c9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::SuikaClone.Factories.BubbleFruitFactory
-  _fruitPrefab: {fileID: 7159517603566686973, guid: 0b8666aea131f114c9025064ce116a1c, type: 3}
-  _parent: {fileID: 372106081}
---- !u!114 &1753065147
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1753065143}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 959b5500dcad351479f7aabd8f7c155e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::SuikaClone.Factories.SquareFruitFactory
-  _fruitPrefab: {fileID: 9209751209005458779, guid: 3e0cc9ed1ed34a54f9a785c10ce2c3dc, type: 3}
-  _parent: {fileID: 1569905764}
 --- !u!1 &1886243709
 GameObject:
   m_ObjectHideFlags: 0
@@ -917,6 +1232,170 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
   _inputManager: {fileID: 2091068928}
+--- !u!1 &1922359651
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1922359652}
+  - component: {fileID: 1922359653}
+  - component: {fileID: 1922359656}
+  - component: {fileID: 1922359655}
+  - component: {fileID: 1922359654}
+  m_Layer: 0
+  m_Name: BubblePools
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1922359652
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1922359651}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1669318743}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1922359653
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1922359651}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ddc9b2d8f8d0374eb382a38c4c12045, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SuikaClone.Pools.BubbleFruitPool
+  initialCount: 10
+--- !u!114 &1922359654
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1922359651}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f3cae74048b43fc9fd6d9e6e7855108, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: SuikaClone.Runtime::SuikaClone.Pools.BubbleBlueFruitPool
+  initialCount: 10
+--- !u!114 &1922359655
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1922359651}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a70b28b4bc84a7fb9e2e2e9c4c3a107, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: SuikaClone.Runtime::SuikaClone.Pools.BubbleGreenFruitPool
+  initialCount: 10
+--- !u!114 &1922359656
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1922359651}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e0c7f79c1cf48eeab826fcfd2a9f106, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: SuikaClone.Runtime::SuikaClone.Pools.BubbleRedFruitPool
+  initialCount: 10
+--- !u!1 &1929249438
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1929249439}
+  - component: {fileID: 1929249440}
+  - component: {fileID: 1929249442}
+  - component: {fileID: 1929249441}
+  m_Layer: 0
+  m_Name: SquareFactories
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1929249439
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1929249438}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1569905764}
+  m_Father: {fileID: 1753065144}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1929249440
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1929249438}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 959b5500dcad351479f7aabd8f7c155e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SuikaClone.Factories.SquareFruitFactory
+  _fruitPrefab: {fileID: 9209751209005458779, guid: 3e0cc9ed1ed34a54f9a785c10ce2c3dc, type: 3}
+  _parent: {fileID: 1569905764}
+--- !u!114 &1929249441
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1929249438}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43d0cdb617bd4a4aab611127c9fca105, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: SuikaClone.Runtime::SuikaClone.Factories.SquareGreenFruitFactory
+  _fruitPrefab: {fileID: 9209751209005458779, guid: 9450c5a9640d1b74f97c4fb7b23fd22c, type: 3}
+  _parent: {fileID: 1569905764}
+--- !u!114 &1929249442
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1929249438}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 608e88e5cfa4441cbeb1fd85b1e7b104, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: SuikaClone.Runtime::SuikaClone.Factories.SquareRedFruitFactory
+  _fruitPrefab: {fileID: 9209751209005458779, guid: 09f3f91d1addf3541b311f30dc2b4892, type: 3}
+  _parent: {fileID: 1569905764}
 --- !u!1 &1950868803
 GameObject:
   m_ObjectHideFlags: 0
@@ -929,7 +1408,7 @@ GameObject:
   - component: {fileID: 1950868804}
   - component: {fileID: 1950868806}
   m_Layer: 0
-  m_Name: MergeManager
+  m_Name: Spawn & Merge Manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -974,9 +1453,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2fef5072c21d9d42bb3ebdc3680c575, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FruitSpawnManager
-  baseFruitPool: {fileID: 1669318744}
-  bubbleFruitPool: {fileID: 1669318745}
-  squareFruitPool: {fileID: 1669318746}
+  baseFruitPool: {fileID: 827865654}
+  baseRedPool: {fileID: 827865657}
+  baseGreenPool: {fileID: 827865656}
+  baseBluePool: {fileID: 827865655}
+  bubbleFruitPool: {fileID: 1922359653}
+  bubbleRedFruitPool: {fileID: 1922359656}
+  bubbleGreenFruitPool: {fileID: 1922359655}
+  bubbleBlueFruitPool: {fileID: 1922359654}
+  squareFruitPool: {fileID: 829713419}
+  squareRedFruitPool: {fileID: 829713421}
+  squareGreenFruitPool: {fileID: 829713420}
 --- !u!1 &2091068926
 GameObject:
   m_ObjectHideFlags: 0
@@ -1021,6 +1508,98 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d67095e3908afcc46ab3be568f08a070, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SuikaClone.Core.InputManager
+--- !u!1 &2102496007
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2102496008}
+  - component: {fileID: 2102496009}
+  - component: {fileID: 2102496011}
+  - component: {fileID: 2102496012}
+  - component: {fileID: 2102496010}
+  m_Layer: 0
+  m_Name: BaseFactories
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2102496008
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2102496007}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1070665060}
+  m_Father: {fileID: 1753065144}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2102496009
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2102496007}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e0de83fc2374da47a40a6fd5c9d8d8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: SuikaClone.Factories::SuikaClone.Factories.BaseFruitFactory
+  _fruitPrefab: {fileID: 7641072189545263877, guid: 0c1cc1dbfbc42db409238a28424f9563, type: 3}
+  _parent: {fileID: 1070665060}
+--- !u!114 &2102496010
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2102496007}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f44b384433cf2d84e9dc7a9adf7d3b8c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: SuikaClone.Runtime::SuikaClone.Factories.BaseBlueFruitFactory
+  _fruitPrefab: {fileID: 7641072189545263877, guid: a55d913b421f5e1419a6ebac64ec58b4, type: 3}
+  _parent: {fileID: 1070665060}
+--- !u!114 &2102496011
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2102496007}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 412eadef6062461449cd12722a7d1430, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: SuikaClone.Runtime::SuikaClone.Factories.BaseRedFruitFactory
+  _fruitPrefab: {fileID: 7641072189545263877, guid: e525196bb6e3f924cbf0cc8357ea567e, type: 3}
+  _parent: {fileID: 1070665060}
+--- !u!114 &2102496012
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2102496007}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6271504a51222b44f9940497a58965f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: SuikaClone.Runtime::SuikaClone.Factories.BaseGreenFruitFactory
+  _fruitPrefab: {fileID: 7641072189545263877, guid: 4cb9e33fec964ac48bedd6847a5f46e2, type: 3}
+  _parent: {fileID: 1070665060}
 --- !u!1001 &4955077489187763031
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1088,6 +1667,7 @@ SceneRoots:
   - {fileID: 4955077489187763031}
   - {fileID: 1094892748}
   - {fileID: 223091395}
+  - {fileID: 1748064601}
   - {fileID: 400006805}
   - {fileID: 2091068927}
   - {fileID: 1669318743}
@@ -1096,3 +1676,4 @@ SceneRoots:
   - {fileID: 212358552}
   - {fileID: 1950868805}
   - {fileID: 1111141697}
+  - {fileID: 1719840898}
