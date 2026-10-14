@@ -25,10 +25,9 @@ namespace SuikaClone.Core
         [SerializeField] private SquareRedFruitFactory squareRedFruitFactory;
         [SerializeField] private SquareGreenFruitFactory squareGreenFruitFactory;
 
-        [Header("Pools")]
-        [SerializeField] private BaseFruitPool baseFruitPool;
-        [SerializeField] private BubbleFruitPool bubbleFruitPool;
-        [SerializeField] private SquareFruitPool squareFruitPool;
+        [Header("Effects")]
+        [SerializeField] private EffectsFactory effectsFactory;
+        [SerializeField] private EffectsPool effectsPool;
 
         [Header("Managers")]
         [SerializeField] private MergeManager mergeManager;
@@ -43,7 +42,7 @@ namespace SuikaClone.Core
         [SerializeField] private LoseLine loseLine;
 
         private void Awake()
-        {
+        {            
             fruitSpawnManager.Initialize(
                 baseFruitFactory,
                 baseRedFruitFactory,
@@ -56,7 +55,9 @@ namespace SuikaClone.Core
                 squareFruitFactory,
                 squareRedFruitFactory,
                 squareGreenFruitFactory,
-                mergeManager);
+                mergeManager
+            );
+
             
             playerController.Initialize(fruitSpawnManager);
 
@@ -64,6 +65,9 @@ namespace SuikaClone.Core
 
             gameManager.Initialize(playerController, fruitSpawnManager, scoreManager);
             loseLine.Initialize(gameManager);
+        
+            effectsFactory.Initialize();
+            effectsPool.Initialize(effectsFactory);
         }
     }
 }

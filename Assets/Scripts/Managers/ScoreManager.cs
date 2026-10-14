@@ -1,19 +1,22 @@
 using UnityEngine;
 
-public class ScoreManager : MonoBehaviour
+namespace SuikaClone.Managers
 {
-    [SerializeField] private int _currentScore = 0;
-
-    public int CurrentScore => _currentScore;
-
-    public void Initialize()
+    public class ScoreManager : MonoBehaviour
     {
-        // Initialization logic if needed
-    }
+        [SerializeField] private int _currentScore = 0;
 
-    public void AddScore(int scoreToAdd)
-    {
-        _currentScore += scoreToAdd;
-        // Debug.Log($"[ScoreManager] Current Score: {_currentScore}");
+        public int CurrentScore => _currentScore;
+
+        public void Initialize()
+        {
+            // Initialization logic if needed
+        }
+
+        public void AddScore(int scoreToAdd)
+        {
+            _currentScore += scoreToAdd;
+            // Debug.Log($"[ScoreManager] Current Score: {_currentScore}");
+        }
     }
 }

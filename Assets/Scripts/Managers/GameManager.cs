@@ -1,6 +1,7 @@
+using SuikaClone.Core;
 using UnityEngine;
 
-namespace SuikaClone.Core
+namespace SuikaClone.Managers
 {
     public class GameManager : MonoBehaviour
     {

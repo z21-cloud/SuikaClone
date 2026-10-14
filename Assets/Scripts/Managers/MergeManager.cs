@@ -1,5 +1,4 @@
 using SuikaClone.Fruits;
-using SuikaClone.Pools;
 using UnityEngine;
 
 namespace SuikaClone.Managers
@@ -29,6 +28,7 @@ namespace SuikaClone.Managers
 
             int newFruitScore = fruit1.FruitData.FruitScore + fruit2.FruitData.FruitScore;
 
+            // effectManager.PlayEffect();
             scoreManager.AddScore(newFruitScore);
 
             SelectFruitType(fruit1, fruit2);

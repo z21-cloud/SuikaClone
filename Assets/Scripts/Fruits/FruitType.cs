@@ -1,18 +1,19 @@
-using UnityEngine;
-
-public enum FruitType
+namespace SuikaClone.Fruits
 {
-    Base,
-    BaseRed,
-    BaseGreen,
-    BaseBlue,
+    public enum FruitType
+    {
+        Base,
+        BaseRed,
+        BaseGreen,
+        BaseBlue,
 
-    Bubble,
-    BubbleRed,
-    BubbleGreen,
-    BubbleBlue,
+        Bubble,
+        BubbleRed,
+        BubbleGreen,
+        BubbleBlue,
 
-    Square,
-    SquareRed,
-    SquareGreen
+        Square,
+        SquareRed,
+        SquareGreen
+    }
 }
