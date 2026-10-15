@@ -54,7 +54,7 @@ public class MergeCollisionTests
         bubbleFruitPool.Initialize(bubbleFruitFactory);
         squareFruitPool.Initialize(squareFruitFactory);
 
-        mergeManager.Initialize(fruitSpawnManager, scoreManager);
+       // mergeManager.Initialize(fruitSpawnManager, scoreManager);
     }
 
     [UnityTearDown]

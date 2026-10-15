@@ -1,3 +1,6 @@
 {
-    "name": "SuikaClone.Runtime"
+    "name": "SuikaClone.Runtime",
+    "references": [
+        "Unity.TextMeshPro"
+    ]
 }

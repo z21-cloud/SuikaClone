@@ -7,6 +7,7 @@ namespace SuikaClone.Core
     public class PlayerController : MonoBehaviour, IInputReader
     {
         [SerializeField] private InputManager _inputManager;
+        [SerializeField] private bool _automatically;
 
         private const float _spawnRate = 2f; // Time in seconds between fruit spawns
                                              // private const float _minYPosition = 3f;
@@ -17,13 +18,13 @@ namespace SuikaClone.Core
 
         // private const float _minXPosition = -2;
         // private const float _maxXPosition = 2;
-
-        public bool MouseLMB => _inputManager.MouseLMB;
-        public Vector2 MousePosition => _inputManager.MousePosition;
-
         private FruitSpawnManager _fruitSpawnManager;
         private Fruit _currentFruit;
         private float _timer;
+
+        public bool MouseLMB => _inputManager.MouseLMB;
+        public Vector2 MousePosition => _inputManager.MousePosition;
+        public bool IsAutomatically => _automatically;
 
         public void Initialize(FruitSpawnManager fruitSpawnManager)
         {
@@ -31,7 +32,22 @@ namespace SuikaClone.Core
             _timer = _spawnRate; // Initialize the timer to allow immediate spawning
         }
 
+        private void Start()
+        {
+            if(_automatically) _fruitSpawnManager.AutomaticallySpawnFruitsRandomly();
+        }
+
         private void Update()
+        {
+            if(_automatically)
+            {
+                return;
+            } 
+            
+            PlayerSpawnLoop();
+        }
+
+        private bool PlayerSpawnLoop()
         {
             _timer += Time.deltaTime;
 
@@ -44,13 +60,13 @@ namespace SuikaClone.Core
             if (_currentFruit == null)
             {
                 Debug.Log("[PlayerController] Current fruit is null. Cannot proceed with spawning.");
-                return;
+                return false;
             }
 
             if (!_currentFruit.TryGetComponent(out Rigidbody2D fruitRb))
             {
                 Debug.LogError("[PlayerController] No available fruit in the pool.");
-                return;
+                return false;
             }
 
             fruitRb.bodyType = RigidbodyType2D.Kinematic; // Make the fruit kinematic to prevent physics interactions while moving
@@ -62,6 +78,8 @@ namespace SuikaClone.Core
                 Debug.Log($"[PlayerController] Fruit Spawned at Position: {spawnPosition}");
                 MoveFruitToMousePosition(fruitRb, spawnPosition);
             }
+
+            return true;
         }
 
         private Vector2 ClampMousePosition()

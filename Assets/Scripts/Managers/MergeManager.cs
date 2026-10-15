@@ -5,15 +5,15 @@ namespace SuikaClone.Managers
 {
     public class MergeManager : MonoBehaviour, IMergeHandler
     {
-        // Singleton instance for quick access to the MergeManager from other scripts ; Temp decision, can be changed later if needed
-        private FruitSpawnManager fruitSpawnManager;
-        private ScoreManager scoreManager;
+        private FruitSpawnManager _fruitSpawnManager;
+        private EffectManager _effectManager;
+        private ScoreManager _scoreManager;
 
-        public void Initialize(FruitSpawnManager fruitSpawnManager, ScoreManager scoreManager)
+        public void Initialize(FruitSpawnManager fruitSpawnManager, ScoreManager scoreManager, EffectManager effectManager)
         {
-            // Initialization logic if needed
-            this.fruitSpawnManager = fruitSpawnManager;
-            this.scoreManager = scoreManager;
+            _fruitSpawnManager = fruitSpawnManager;
+            _scoreManager = scoreManager;
+            _effectManager = effectManager;
         }
 
         public void MergeFruits(Fruit fruit1, Fruit fruit2)
@@ -28,8 +28,9 @@ namespace SuikaClone.Managers
 
             int newFruitScore = fruit1.FruitData.FruitScore + fruit2.FruitData.FruitScore;
 
-            // effectManager.PlayEffect();
-            scoreManager.AddScore(newFruitScore);
+            Vector3 mergePosition = (fruit1.transform.position + fruit2.transform.position) / 2;
+            _effectManager.PlayEffect(mergePosition);
+            _scoreManager.AddScore(newFruitScore);
 
             SelectFruitType(fruit1, fruit2);
         }
@@ -41,16 +42,16 @@ namespace SuikaClone.Managers
             Vector3 mergePosition = (fruit1.transform.position + fruit2.transform.position) / 2;
 
             // Return the original fruits to their respective pools
-            fruitSpawnManager.ReturnFruit(fruit1);
+            _fruitSpawnManager.ReturnFruit(fruit1);
             // Debug.Log($"[MergeManager] Returning Fruit: {fruit1.name}");
                         
-            fruitSpawnManager.ReturnFruit(fruit2);
+            _fruitSpawnManager.ReturnFruit(fruit2);
             // Debug.Log($"[MergeManager] Returning Fruit: {fruit2.name}");
 
             // Handle fruit selection logic here
             Debug.Log($"[MergeManager] Merging Fruit: {fruit1.name} + {fruit2.name}");
 
-            Fruit fruit = fruitSpawnManager.SpawnFruit(newFruitLevel, mergePosition);
+            Fruit fruit = _fruitSpawnManager.SpawnFruit(newFruitLevel, mergePosition);
 
             if(fruit == null || !fruit.TryGetComponent<Rigidbody2D>(out Rigidbody2D fruitRb))
             {
