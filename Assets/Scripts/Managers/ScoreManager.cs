@@ -12,14 +12,16 @@ namespace SuikaClone.Managers
 
         public void Start()
         {
-            _scoreText.text = $"0";
+            if (_scoreText != null) _scoreText.text = $"{_currentScore}";
+            else Debug.LogWarning($"[ScoreManager] scoreText is null!");
         }
 
         public void AddScore(int scoreToAdd)
         {
             _currentScore += scoreToAdd;
             // Debug.Log($"[ScoreManager] Current Score: {_currentScore}");
-            _scoreText.text = $"{CurrentScore}";
+            if (_scoreText != null) _scoreText.text = $"{CurrentScore}";
+            else Debug.LogWarning($"[ScoreManager] scoreText is null!");
         }
     }
 }

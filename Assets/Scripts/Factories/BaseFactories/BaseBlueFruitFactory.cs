@@ -10,18 +10,18 @@ namespace SuikaClone.Factories
         [SerializeField] private Transform _parent;
 
         private Factory<Fruit> _factory;
-        private IMergeHandler mergeHandler;
+        private IMergeHandler _mergeHandler;
         
         public void Initialize(IMergeHandler mergeHandler)
         {
             _factory = new Factory<Fruit>(_fruitPrefab, _parent);
-            this.mergeHandler = mergeHandler;
+            _mergeHandler = mergeHandler;
         }
 
         public Fruit Create()
         {
             var obj = _factory.Create();
-            obj.Initialize(mergeHandler);
+            obj.Initialize(_mergeHandler);
             return obj;
         }
     }

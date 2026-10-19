@@ -141,6 +141,8 @@ namespace SuikaClone.Managers
 
         public void ReturnFruit(Fruit fruit)
         {
+            _activeFruits.Remove(fruit);
+            
             switch (fruit.FruitData.FruitType)
             {
                 case FruitType.Base:

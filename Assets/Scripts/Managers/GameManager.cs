@@ -1,11 +1,13 @@
 using SuikaClone.Core;
+using TMPro;
 using UnityEngine;
 
 namespace SuikaClone.Managers
 {
     public class GameManager : MonoBehaviour
     {
-        [SerializeField] private GameObject ui;
+        [SerializeField] private GameObject _loseUI;
+        [SerializeField] private TMP_Text[] _highScoreTexts;
         private PlayerController _playerController;
         private FruitSpawnManager _fruitSpawnManager;
         private ScoreManager _scoreManager;
@@ -17,28 +19,49 @@ namespace SuikaClone.Managers
             _fruitSpawnManager = fruitSpawnManager;
             _scoreManager = scoreManager;
             _highScoreManager = highScoreManager;
-            
-            ui.SetActive(false);
+
+            RefreshHighScores();
+            if (_loseUI != null) _loseUI.SetActive(false);
+            else Debug.LogWarning($"[GameManager] loseUI is null!");
         }
 
         public void GameOver()
         {
-            Debug.Log("[GameManager] Game Over triggered. Implement game over logic here.");
             Debug.LogWarning("[GameManager] Game over");
-            // Implement game over logic here, such as stopping the game, showing a game over screen
 
             _playerController.enabled = false; // Disable player controls
             Debug.Log("[GameManager] Player controls disabled.");
             Debug.Log($"[GameManager] Final Score: {_scoreManager.CurrentScore}"); // Log the final score
 
             _highScoreManager.UpdateScore(_scoreManager.CurrentScore);
+            RefreshHighScores();
 
             _fruitSpawnManager.ReturnAllActiveFruits(); // Return all active fruits
-            // Additional game over logic can be added here, such as resetting the game or returning to
             _fruitSpawnManager.StopAllCoroutines(); // Stop any ongoing fruit spawning coroutines
             _fruitSpawnManager.AutomaticallySpawnFruitsRandomly();
             
-            ui.SetActive(true);
+            _loseUI.SetActive(true);
+        }
+
+        private void RefreshHighScores()
+        {
+            if (_highScoreTexts == null)
+            {
+                Debug.LogError("[GameManager] High score text fields are not configured.", this);
+                return;
+            }
+
+            for (int i = 0; i < _highScoreTexts.Length; i++)
+            {
+                if (_highScoreTexts[i] == null)
+                {
+                    Debug.LogError($"[GameManager] High score text at index {i} is not assigned.", this);
+                    continue;
+                }
+
+                int score = i < _highScoreManager.Scores.Count ? _highScoreManager.Scores[i] : 0;
+                _highScoreTexts[i].text = score.ToString();
+            }
         }
     }
 }

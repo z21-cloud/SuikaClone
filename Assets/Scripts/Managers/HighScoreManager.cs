@@ -5,70 +5,105 @@ using UnityEngine;
 
 namespace SuikaClone.Managers
 {
-    [Serializable]
     public class HighScoreManager
     {
-        public List<int> Scores = new();
+        private const int MaxScores = 3;
+        private readonly List<int> _scores = new();
+
+        public IReadOnlyList<int> Scores => _scores;
 
         private string SavePath => Path.Combine(Application.persistentDataPath, "highscores.json");
-        
+
         public void UpdateScore(int newScore)
         {
-            Scores.Add(newScore);
-
-            SortScore();
-
-            if (Scores.Count > 3) Scores.RemoveRange(3, Scores.Count - 3);
-
+            _scores.Add(newScore);
+            SortAndLimitScores();
             Save();
         }
 
-
         public void Load()
         {
-            if (!File.Exists(SavePath)) return;
+            _scores.Clear();
 
-            string json = File.ReadAllText(SavePath);
-            HighScoreData data = JsonUtility.FromJson<HighScoreData>(json);
+            string json;
+            try
+            {
+                json = File.ReadAllText(SavePath);
+            }
+            catch (FileNotFoundException)
+            {
+                return;
+            }
+            catch (DirectoryNotFoundException)
+            {
+                return;
+            }
+            catch (IOException exception)
+            {
+                Debug.LogError($"[HighScoreManager] Could not read high scores from '{SavePath}': {exception}");
+                return;
+            }
+            catch (UnauthorizedAccessException exception)
+            {
+                Debug.LogError($"[HighScoreManager] Could not read high scores from '{SavePath}': {exception}");
+                return;
+            }
 
-            if (data == null || data.Scores == null) return;
+            HighScoreData data;
+            try
+            {
+                data = JsonUtility.FromJson<HighScoreData>(json);
+            }
+            catch (ArgumentException exception)
+            {
+                Debug.LogError($"[HighScoreManager] Could not parse high scores from '{SavePath}': {exception}");
+                return;
+            }
 
-            Scores = data.Scores;
-            SortScore();
+            if (data?.Scores == null)
+            {
+                Debug.LogError($"[HighScoreManager] Invalid high score data in '{SavePath}'.");
+                return;
+            }
 
-            if (Scores.Count > 3) Scores.RemoveRange(3, Scores.Count - 3);
+            _scores.AddRange(data.Scores);
+            SortAndLimitScores();
         }
 
         private void Save()
         {
-            HighScoreData data = new HighScoreData
+            HighScoreData data = new()
             {
-                Scores = Scores
+                Scores = new List<int>(_scores)
             };
 
-            string json = JsonUtility.ToJson(data, true);
-            File.WriteAllText(SavePath, json);
+            try
+            {
+                string json = JsonUtility.ToJson(data, true);
+                Directory.CreateDirectory(Application.persistentDataPath);
+                File.WriteAllText(SavePath, json);
+            }
+            catch (IOException exception)
+            {
+                Debug.LogError($"[HighScoreManager] Could not save high scores to '{SavePath}': {exception}");
+            }
+            catch (UnauthorizedAccessException exception)
+            {
+                Debug.LogError($"[HighScoreManager] Could not save high scores to '{SavePath}': {exception}");
+            }
+            catch (ArgumentException exception)
+            {
+                Debug.LogError($"[HighScoreManager] Could not save high scores to '{SavePath}': {exception}");
+            }
         }
 
-        private void SortScore()
+        private void SortAndLimitScores()
         {
-            for (int i = 0; i < Scores.Count - 1; i++)
-            {
-                int maxIndex = i;
-                for (int j = i + 1; j < Scores.Count; j++)
-                {
-                    if (Scores[maxIndex] < Scores[j])
-                    {
-                        maxIndex = j;
-                    }
-                }
+            _scores.Sort((left, right) => right.CompareTo(left));
 
-                if (maxIndex != i)
-                {
-                    int temp = Scores[i];
-                    Scores[i] = Scores[maxIndex];
-                    Scores[maxIndex] = temp;
-                }
+            if (_scores.Count > MaxScores)
+            {
+                _scores.RemoveRange(MaxScores, _scores.Count - MaxScores);
             }
         }
     }

@@ -179,26 +179,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3f8010c4c464a949a4f3fb55338de3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SuikaClone.GameBootstrapper.GameBootstrapper
-  baseFruitFactory: {fileID: 2102496009}
-  baseRedFruitFactory: {fileID: 2102496011}
-  baseGreenFruitFactory: {fileID: 2102496012}
-  baseBlueFruitFactory: {fileID: 2102496010}
-  bubbleFruitFactory: {fileID: 256962557}
-  bubbleRedFruitFactory: {fileID: 256962560}
-  bubbleGreenFruitFactory: {fileID: 256962559}
-  bubbleBlueFruitFactory: {fileID: 256962558}
-  squareFruitFactory: {fileID: 1929249440}
-  squareRedFruitFactory: {fileID: 1929249442}
-  squareGreenFruitFactory: {fileID: 1929249441}
-  effectManager: {fileID: 392891513}
-  effectsFactory: {fileID: 1753065145}
-  effectsPool: {fileID: 1669318744}
-  mergeManager: {fileID: 341932144}
-  fruitSpawnManager: {fileID: 1950868806}
-  scoreManager: {fileID: 1111141698}
-  gameManager: {fileID: 1719840899}
-  playerController: {fileID: 1886243711}
-  loseLine: {fileID: 1748064603}
+  _baseFruitFactory: {fileID: 2102496009}
+  _baseRedFruitFactory: {fileID: 2102496011}
+  _baseGreenFruitFactory: {fileID: 2102496012}
+  _baseBlueFruitFactory: {fileID: 2102496010}
+  _bubbleFruitFactory: {fileID: 256962557}
+  _bubbleRedFruitFactory: {fileID: 256962560}
+  _bubbleGreenFruitFactory: {fileID: 256962559}
+  _bubbleBlueFruitFactory: {fileID: 256962558}
+  _squareFruitFactory: {fileID: 1929249440}
+  _squareRedFruitFactory: {fileID: 1929249442}
+  _squareGreenFruitFactory: {fileID: 1929249441}
+  _effectManager: {fileID: 392891513}
+  _effectsFactory: {fileID: 1753065145}
+  _effectsPool: {fileID: 1669318744}
+  _mergeManager: {fileID: 341932144}
+  _fruitSpawnManager: {fileID: 1950868806}
+  _scoreManager: {fileID: 1111141698}
+  _gameManager: {fileID: 1719840899}
+  _playerController: {fileID: 1886243711}
+  _loseLine: {fileID: 1748064603}
 --- !u!4 &212358552
 Transform:
   m_ObjectHideFlags: 0
@@ -1353,6 +1353,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ScoreManager
   _currentScore: 0
+  _scoreText: {fileID: 0}
 --- !u!1 &1557807943
 GameObject:
   m_ObjectHideFlags: 0
@@ -1555,6 +1556,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e47d7b64c431fc14f868e9ddefb5b898, type: 3}
   m_Name: 
   m_EditorClassIdentifier: SuikaClone.Runtime::SuikaClone.Core.GameManager
+  _loseUI: {fileID: 0}
+  _highScoreTexts: []
 --- !u!1001 &1748064601
 PrefabInstance:
   m_ObjectHideFlags: 0
